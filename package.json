@@ -1,0 +1,24 @@
+{
+  "name": "@wniemiec-component-reactnative/day-picker",
+  "version": "1.0.0",
+  "description": "Day selector.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wniemiec-components-reactnative/day-picker.git"
+  },
+  "keywords": [
+    "wniemiec",
+    "component",
+    "reactnative",
+    "day-picker",
+    "day",
+    "picker"
+  ],
+  "author": "William Niemiec <williamniemiec@hotmail.com> (https://www.linkedin.com/in/williamniemiec)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wniemiec-components-reactnative/day-picker/issues"
+  },
+  "homepage": "https://github.com/wniemiec-components-reactnative/day-picker#readme"
+}
