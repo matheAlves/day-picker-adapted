@@ -31,24 +31,24 @@ import styles from './styles';
  *  - default: Default day color
  *  - text: Color of the number that represents the day
  */
-export default function Day({ 
-  onPress, 
-  month, 
-  day, 
+export default function Day({
+  onPress,
+  month,
+  day,
   highlightedDays,
-  validWeekDays, 
-  width, 
-  colorMapping 
+  validWeekDays,
+  width,
+  colorMapping
 }) {
-  
+
   return (
-    <DayButton 
-      onPress={onPress} 
-      month={month} 
-      day={day} 
-      highlightedDays={highlightedDays} 
+    <DayButton
+      onPress={onPress}
+      month={month}
+      day={day}
+      highlightedDays={highlightedDays}
       validWeekDays={validWeekDays}
-      width={width} 
+      width={width}
       colorMapping={colorMapping}
     >
       <Text style={buildDayTextStyle(colorMapping)}>
@@ -58,20 +58,20 @@ export default function Day({
   );
 }
 
-function DayButton({ 
-  children, 
-  onPress, 
-  month, 
-  day, 
-  highlightedDays, 
-  validWeekDays, 
-  width, 
-  colorMapping 
+function DayButton({
+  children,
+  onPress,
+  month,
+  day,
+  highlightedDays,
+  validWeekDays,
+  width,
+  colorMapping
 }) {
   return (
-    <TouchableHighlight 
-      onPress={onPress} 
-      underlayColor='transparent' 
+    <TouchableHighlight
+      onPress={onPress}
+      underlayColor='transparent'
       style={buildDayButtonStyle(width)}
     >
       <View style={buildDayButtonAreaStyle(month, day, colorMapping, validWeekDays, highlightedDays)}>
@@ -83,21 +83,21 @@ function DayButton({
 
 function buildDayButtonStyle(width) {
   return [
-    styles.dayButton, 
+    styles.dayButton,
     { width: width }
   ];
 }
 
 function buildDayButtonAreaStyle(month, day, colorMapping, validWeekDays, highlightedDays) {
   return [
-    styles.dayItem, 
+    styles.dayItem,
     buildButtonColor(month, day, colorMapping, validWeekDays, highlightedDays)
   ];
 }
 
 function buildDayTextStyle(colorMapping) {
   return [
-    styles.dayText, 
+    styles.dayText,
     { color: colorMapping.text }
   ];
 }
@@ -106,33 +106,20 @@ function buildDayTextStyle(colorMapping) {
 function buildButtonColor(month, day, colorMapping, validWeekDays, highlightedDays) {
   const today = getBeginOf(getCurrentTime());
   const selectedDate = getBeginOf(new Date(getCurrentYear(), month, day));
-  
-  let opacity = 1;
-  let bgColor = colorMapping.default;
+
+  let opacity = 0.4;
+  let bgColor = colorMapping.past;
   let borderColor = null;
   let borderWidth = 0;
 
-  if (isSelectedDateToday(selectedDate, today)) {
-    borderColor = colorMapping.today;
-    borderWidth = 4;
-  }
 
-  if (isSelectedDateFutureDate(selectedDate, today)) {
+  if (isSelectedDateFutureDate(selectedDate, today) && isSelectedDateValid(selectedDate, validWeekDays)) {
     bgColor = colorMapping.future;
   }
 
-  if (isSelectedDateValid(selectedDate, validWeekDays)) {
-    if (isSelectedDatePastDate(selectedDate, today)) {
-      if (isSelectedDateHighlighted(selectedDate, highlightedDays)) { 
-        bgColor = colorMapping.highlight;
-      }
-      else {
-        bgColor = colorMapping.past;
-      }
-    }
-  }
-  else {
-    opacity = 0.4;
+  if (isSelectedDateHighlighted(selectedDate, highlightedDays)) {
+    bgColor = colorMapping.highlight;
+    opacity = 1
   }
 
   return {
@@ -186,10 +173,10 @@ function isSelectedDateHighlighted(selectedDate, highlightedDays) {
 
 function getFormatedDate(date) {
   const formatedYear = date.getFullYear().toString();
-  let formatedMonth = (date.getMonth()+1).toString();
+  let formatedMonth = (date.getMonth() + 1).toString();
   let formatedDay = date.getDate().toString();
 
-  if (date.getMonth()+1 < 10)
+  if (date.getMonth() + 1 < 10)
     formatedMonth = '0' + formatedMonth;
 
   if (date.getDate() < 10)

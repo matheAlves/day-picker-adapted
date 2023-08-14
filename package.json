@@ -1,11 +1,11 @@
 {
-  "name": "@wniemiec-component-reactnative/day-picker",
-  "version": "1.0.1",
+  "name": "feedme-day-picker",
+  "version": "1.0.0",
   "description": "Day selector.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wniemiec-components-reactnative/day-picker.git"
+    "url": "git+https://github.com/matheAlves/day-picker-adapted"
   },
   "keywords": [
     "wniemiec",
@@ -15,10 +15,10 @@
     "day",
     "picker"
   ],
-  "author": "William Niemiec <williamniemiec@hotmail.com> (https://www.linkedin.com/in/williamniemiec)",
+  "author": "Matheus Alves <matheus.souza.alves@gmail.com> (https://www.linkedin.com/in/matheAlves)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wniemiec-components-reactnative/day-picker/issues"
+    "url": "https://github.com/matheAlves/day-picker-adapted/issues"
   },
-  "homepage": "https://github.com/wniemiec-components-reactnative/day-picker#readme"
+  "homepage": "https://github.com/matheAlves/day-picker-adapted"
 }
